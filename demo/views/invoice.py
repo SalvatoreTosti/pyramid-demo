@@ -23,17 +23,8 @@ def invoice_view(request):
     
 @view_config(route_name='invoice', match_param='action=create', renderer='json')
 def invoice_create(request):
-    # payload = request.json_body
     entry = Invoice()
-    print()
-    print(request.dbsession.add(entry))
-    return {"ok":'yep'}
-    # return entry.to_json()
-        # form = BlogCreateForm(request.POST)
-        # if request.method == 'POST' and form.validate():
-            # form.populate_obj(entry)
-            
-    
-    # request = request.json_body
-    # print(request.json_body)
-    # return {'test':'YES'}
+    request.dbsession.add(entry)
+    request.dbsession.flush()
+    invoice = request.dbsession.query(Invoice).get(entry.id)
+    return invoice.to_json()
