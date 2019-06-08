@@ -17,6 +17,6 @@ class InvoiceItem(Base):
     units = Column(Integer)
     description = Column(Text)
     amount = Column(NUMERIC)
-    parent_id = Column(Integer, ForeignKey('invoice.id'))
+    parent_id = Column(Integer, ForeignKey('invoices.id'))
     # invoice = relationship("Invoice", back_populates="items")
     
