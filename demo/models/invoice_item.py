@@ -1,10 +1,12 @@
 import datetime
+from sqlalchemy.orm import relationship
 from sqlalchemy import (
     Column,
     Integer,
     Text,
     DateTime,
-    NUMERIC
+    NUMERIC,
+    ForeignKey
 )
 
 from .meta import Base
@@ -15,5 +17,6 @@ class InvoiceItem(Base):
     units = Column(Integer)
     description = Column(Text)
     amount = Column(NUMERIC)
-    invoice = relationship("Invoice", back_populates="items")
+    parent_id = Column(Integer, ForeignKey('invoice.id'))
+    # invoice = relationship("Invoice", back_populates="items")
     
