@@ -3,7 +3,7 @@ import json
 import datetime
 from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
-from demo.views.utils import validateIntegers
+from demo.views.utils import validateIntegers, success
 
 @view_config(route_name='invoice', match_param='action=view', renderer='json', request_method='POST')
 def invoice_view(request):
@@ -21,7 +21,7 @@ def invoice_view(request):
     for item in invoiceItems:
         parentID = item.parent_id
         payload[parentID]['items'].append(item.to_json())
-    return {'invoices': payload}
+    return success(payload=json.dumps({ 'invoices' : payload }))
     
 @view_config(route_name='invoice', match_param='action=create', renderer='json', request_method='POST')
 def invoice_create(request):
@@ -40,4 +40,4 @@ def invoice_create(request):
     request.dbsession.add(entry)
     request.dbsession.flush()
     invoice = request.dbsession.query(Invoice).get(entry.id) 
-    return invoice.to_json()
+    return success(payload=json.dumps(invoice.to_json()))

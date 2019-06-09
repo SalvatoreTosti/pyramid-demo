@@ -2,7 +2,7 @@ import sqlalchemy as sa
 import json
 from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
-from demo.views.utils import validateIntegers, validateFloats, missingInformationError
+from demo.views.utils import validateIntegers, validateFloats, success, failure
 
     
 @view_config(route_name='item', match_param='action=create', renderer='json', request_method='POST')
@@ -11,7 +11,7 @@ def item_create(request):
 
     for arg in ['units', 'description', 'amount', 'parent_id']:
         if not requestJSON.get(arg):
-            return missingInformationError(arg)
+            return failure('expected '+ arg + ' to be supplied.')
     
     error = validateIntegers(requestJSON, ['units', 'parent_id'])
     if error:
@@ -31,4 +31,4 @@ def item_create(request):
     request.dbsession.flush()
     query = request.dbsession.query(InvoiceItem)
     item = query.get(entry.id)
-    return item.to_json()
+    return success(payload=json.dumps(item.to_json()))
