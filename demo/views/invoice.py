@@ -1,7 +1,9 @@
 import sqlalchemy as sa
 import json
+import datetime
 from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
+from demo.views.utils import validateIntegers
 
 @view_config(route_name='invoice', match_param='action=view', renderer='json', request_method='POST')
 def invoice_view(request):
@@ -23,7 +25,18 @@ def invoice_view(request):
     
 @view_config(route_name='invoice', match_param='action=create', renderer='json', request_method='POST')
 def invoice_create(request):
-    entry = Invoice()
+    requestJSON = request.json_body
+    if 'date' in requestJSON:
+        error = validateIntegers(requestJSON, ['date'])
+        if error:
+            return error
+            
+        seconds = int(requestJSON['date'])
+        date = datetime.datetime.fromtimestamp(seconds) #assumes date comes through as seconds since epoch, UTC
+        entry = Invoice(date=date)
+    else:
+        entry = Invoice()
+    
     request.dbsession.add(entry)
     request.dbsession.flush()
     invoice = request.dbsession.query(Invoice).get(entry.id) 
