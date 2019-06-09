@@ -2,11 +2,15 @@ import sqlalchemy as sa
 import json
 from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
-from demo.views.utils import validateIntegers, validateFloats, success, failure
+from demo.views.utils import validateJSON, validateIntegers, validateFloats, success, failure
 
     
 @view_config(route_name='item', match_param='action=create', renderer='json', request_method='POST')
 def item_create(request):
+    error = validateJSON(request)
+    if error:
+        return error
+        
     requestJSON = request.json_body
 
     for arg in ['units', 'description', 'amount', 'parent_id']:

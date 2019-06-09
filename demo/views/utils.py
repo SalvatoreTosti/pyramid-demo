@@ -1,3 +1,5 @@
+import json
+
 def failure(message, status=400):
     return {
         'status' : status,
@@ -11,6 +13,12 @@ def success(message='success.', payload='', status=200):
         'message': message,
         'payload' : payload
     }
+
+def validateJSON(request):
+    try:
+        request.json_body
+    except json.decoder.JSONDecodeError:
+        return failure('malformed JSON message.')
 
 def _validateInteger(value, valueName):
     try:
