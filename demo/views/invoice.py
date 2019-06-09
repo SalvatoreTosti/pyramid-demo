@@ -3,7 +3,7 @@ import json
 from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
 
-@view_config(route_name='invoice', match_param='action=view', renderer='json')
+@view_config(route_name='invoice', match_param='action=view', renderer='json', request_method='POST')
 def invoice_view(request):
     query = request.dbsession.query(Invoice)
     invoices = query.order_by(sa.desc(Invoice.date)).all()
@@ -21,10 +21,10 @@ def invoice_view(request):
         payload[parentID]['items'].append(item.to_json())
     return {'invoices': payload}
     
-@view_config(route_name='invoice', match_param='action=create', renderer='json')
+@view_config(route_name='invoice', match_param='action=create', renderer='json', request_method='POST')
 def invoice_create(request):
     entry = Invoice()
     request.dbsession.add(entry)
     request.dbsession.flush()
-    invoice = request.dbsession.query(Invoice).get(entry.id)
+    invoice = request.dbsession.query(Invoice).get(entry.id) 
     return invoice.to_json()

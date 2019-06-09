@@ -3,7 +3,7 @@ import json
 from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
     
-@view_config(route_name='item', match_param='action=create', renderer='json')
+@view_config(route_name='item', match_param='action=create', renderer='json', request_method='POST')
 def item_create(request):
     requestJSON = request.json_body
     entry = InvoiceItem(
