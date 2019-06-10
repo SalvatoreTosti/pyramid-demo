@@ -1,0 +1,15 @@
+{% extends "base.jinja2" %}
+{% block headmeta %}
+	<title>Pyramid Demo</title>
+{% endblock %}
+{% block scripts %}
+    <script type='text/javascript' src="{{ request.static_url('demo:static/js/invoice.js') }}"></script>
+{% endblock %}
+{% block css %}
+    <link rel= "stylesheet" type= "text/css" href= "{{ request.static_url('demo:static/css/invoice.css') }}">
+{% endblock %}
+{% block content %}
+<div class='flex-column center'>
+    <h1 class='text-center hilight-fg text-shadow'>Pyramid Demo! 🚀</h1>
+</div>
+{% endblock %}

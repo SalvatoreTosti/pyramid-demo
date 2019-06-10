@@ -5,6 +5,12 @@ from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
 from demo.views.utils import validateJSON, validateIntegers, success
 
+
+@view_config(route_name='invoices',
+             renderer='demo:templates/invoice.jinja2')
+def invoice_html(request):
+    return {"ok":"oj"}
+
 @view_config(route_name='invoice', match_param='action=view', renderer='json', request_method='POST')
 def invoice_view(request):
     query = request.dbsession.query(Invoice)
