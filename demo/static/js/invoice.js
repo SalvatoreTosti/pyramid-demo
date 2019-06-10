@@ -28,17 +28,19 @@ $(function(){
             type: 'POST',
             success: function(response) {
                 if( response['status'] != 200 ){
+                    console.log(response['message'])
                     return
                 }
                 
                 payload = JSON.parse(response['payload'])
                 invoices = payload['invoices']
-                
+            
                 invoiceHTMLs = []
                 for (const [id, invoice] of Object.entries(invoices)) {
                     invoiceHTMLs.push(createInvoiceHTML(id, invoice))
                 }
                 
+                $("#invoice-list").empty();
                 for( i = 0; i < invoiceHTMLs.length; i++ ){
                     $('#invoice-list')
                     .append(invoiceHTMLs[i])
