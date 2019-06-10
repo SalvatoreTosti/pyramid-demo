@@ -9,7 +9,7 @@ from demo.views.utils import validateJSON, validateIntegers, success
 @view_config(route_name='invoices',
              renderer='demo:templates/invoice.jinja2')
 def invoice_html(request):
-    return {"ok":"oj"}
+    return {}
 
 @view_config(route_name='invoice', match_param='action=view', renderer='json', request_method='POST')
 def invoice_view(request):
