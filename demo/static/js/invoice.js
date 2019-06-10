@@ -103,7 +103,6 @@ function submitCreateItem(){
                 alert(response['message'])
                 return
             }
-            console.log(response)
             alert("Created Item!")
             refreshInvoices()
         }
