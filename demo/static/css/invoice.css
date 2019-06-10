@@ -69,6 +69,13 @@ body {
   row-gap: 1em;
 }
 
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+
 .text-no-wrap {
     white-space: nowrap;
 }
@@ -116,6 +123,11 @@ body {
 .small-box {
     border-radius: .5em;
     padding: 1em;
+}
+
+.large-box {
+    border-radius: 1em;
+    padding: 2em;
 }
 
 .margin-half {

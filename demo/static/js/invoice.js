@@ -46,7 +46,7 @@ function createInvoiceHTML(id, invoice){
     invoiceDivs = createInvoiceItems(invoice['items'])
     invoiceItemList = 
         $('<div>')
-        .addClass('grid-3')
+        .addClass('flex-row flex-wrap')
     for( i = 0; i < invoiceDivs.length; i++ ){
         invoiceItemList.append(invoiceDivs[i])
     }
