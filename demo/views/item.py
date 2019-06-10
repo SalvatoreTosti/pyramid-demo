@@ -2,8 +2,7 @@ import sqlalchemy as sa
 import json
 from demo.models import Invoice, InvoiceItem
 from pyramid.view import view_config
-from demo.views.utils import validateJSON, validateIntegers, validateFloats, success, failure
-
+from demo.views.utils import validateJSON, validateIntegers, validatePositiveIntegers, validateFloats, validatePositiveFloats, success, failure
     
 @view_config(route_name='item', match_param='action=create', renderer='json', request_method='POST')
 def item_create(request):
@@ -20,8 +19,16 @@ def item_create(request):
     error = validateIntegers(requestJSON, ['units', 'parent_id'])
     if error:
         return error
+        
+    error = validatePositiveIntegers(requestJSON, ['units', 'parent_id'])
+    if error:
+        return error
 
     error = validateFloats(requestJSON, ['amount'])
+    if error:
+        return error
+    
+    error = validatePositiveFloats(requestJSON, ['amount'])
     if error:
         return error
     

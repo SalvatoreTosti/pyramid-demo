@@ -25,12 +25,19 @@ def _validateInteger(value, valueName):
         int(value)
     except (ValueError, TypeError):
         return failure('expected '+ valueName + ' to be an integer value.')
-        
+
 def validateIntegers(dictionary, values):
     for arg in values:
         errorMessage = _validateInteger(dictionary.get(arg), arg)
         if errorMessage:
             return errorMessage
+
+def validatePositiveIntegers(dictionary, values):
+    for arg in values:
+        value = dictionary.get(arg)
+        integer = int(value)
+        if integer < 0:
+            return failure('expected '+ arg + ' to be a positive integer value.')
 
 def _validateFloat(value, valueName):
     try:
@@ -42,5 +49,13 @@ def validateFloats(dictionary, values):
     for arg in values:
         errorMessage = _validateFloat(dictionary.get(arg), arg)
         if errorMessage:
-            return errorMessage  
+            return errorMessage 
+
+def validatePositiveFloats(dictionary, values):
+    for arg in values:
+        value = dictionary.get(arg)
+        flt = float(value)
+        if flt < 0:
+            return failure('expected '+ arg + ' to be a positive float value.')
+ 
     
