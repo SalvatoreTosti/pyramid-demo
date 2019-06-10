@@ -39,7 +39,7 @@ def item_create(request):
     entry = InvoiceItem(
         units = int(requestJSON['units']),
         description = requestJSON['description'],
-        amount = float(requestJSON['amount']),
+        amount = round(float(requestJSON['amount']), 2),
         parent_id = int(requestJSON['parent_id']))
 
     request.dbsession.add(entry)

@@ -31,11 +31,11 @@ def invoice_view(request):
     
 @view_config(route_name='invoice', match_param='action=create', renderer='json', request_method='POST')
 def invoice_create(request):
-    error = validateJSON(request)
-    if error:
-        return error
-    
-    requestJSON = request.json_body
+    try:
+        requestJSON =request.json_body
+    except json.decoder.JSONDecodeError:
+        requestJSON = {}
+        
     if 'date' in requestJSON:
         error = validateIntegers(requestJSON, ['date'])
         if error:
