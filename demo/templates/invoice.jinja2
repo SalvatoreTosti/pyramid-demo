@@ -6,11 +6,32 @@
     <script type='text/javascript' src="{{ request.static_url('demo:static/js/invoice.js') }}"></script>
 {% endblock %}
 {% block css %}
-    <link rel= "stylesheet" type= "text/css" href= "{{ request.static_url('demo:static/css/invoice.css') }}">
+    <link rel= 'stylesheet' type= 'text/css' href= "{{ request.static_url('demo:static/css/invoice.css') }}">
 {% endblock %}
 {% block content %}
 <div class='flex-column center'>
-    <h1 class='text-center hilight-fg text-shadow'>Pyramid Demo! 🚀</h1>
+    <h1 class='text-center hilight-fg text-shadow'>Invoice Manager</h1>
+    <div id='creation-controls'>
+        <form id='invoice-form' onsubmit='return submitCreateInvoice()' class='flex-column small-box mid-bg margin-half'>
+            <div id='date-invoice' class='flex'>
+                <div class='margin-half'>Invoice Date (optional)</div>
+                <input class='margin-half' name='date' type='date'>
+            </div>
+            <input type='submit' value='Create Invoice'>
+         </form>
+         
+         <form class='margin-half' method='POST' action='/item/create'>
+             <div id='description-item' class='flex'>
+                 <div class='margin-half'>Item Description</div>
+                 <input name='description' type='text' value='default description'>
+            </div>
+             <input name='parent_id' type='number' min='1' value= '1'>
+             <input name='units' type='number' min='0' value= '1'>
+             <input type='number' name='amount' min='0' step='0.01' value='1.00'>
+             <input type='submit' value='Create Invoice'>
+          </form>
+    </div>
+    
     <button id='fetch-button'>Refresh</button>
     <div id='invoice-list' class='flex flex-wrap'></div>
 </div>
