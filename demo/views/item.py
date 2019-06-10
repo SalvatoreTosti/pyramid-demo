@@ -25,6 +25,10 @@ def item_create(request):
     if error:
         return error
     
+    parentID = int(requestJSON['parent_id'])    
+    if not request.dbsession.query(Invoice).get(parentID):
+        return failure("specified parent ID does not exist.")
+    
     entry = InvoiceItem(
         units = int(requestJSON['units']),
         description = requestJSON['description'],

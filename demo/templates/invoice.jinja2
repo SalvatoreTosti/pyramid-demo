@@ -20,15 +20,24 @@
             <input type='submit' value='Create Invoice'>
          </form>
          
-         <form class='margin-half' method='POST' action='/item/create'>
+         <form id='item-form' onsubmit='return submitCreateItem()'class='flex-column small-box mid-bg margin-half'>
              <div id='description-item' class='flex'>
-                 <div class='margin-half'>Item Description</div>
-                 <input name='description' type='text' value='default description'>
+                 <div class='margin-half flex-2'>Item Description</div>
+                 <input class='margin-half flex-2' name='description' type='text' value='default description'>
             </div>
-             <input name='parent_id' type='number' min='1' value= '1'>
-             <input name='units' type='number' min='0' value= '1'>
-             <input type='number' name='amount' min='0' step='0.01' value='1.00'>
-             <input type='submit' value='Create Invoice'>
+             <div id='parent-id-item' class='flex'>
+                 <div class='margin-half flex-2'>Parent ID</div>
+                 <input class='margin-half flex-2' name='parent_id' type='number' min='1' value= '1'> 
+             </div>
+             <div id='units-item' class='flex'>
+                 <div class='margin-half flex-2'>Units</div>
+                 <input class='margin-half flex-2' name='units' type='number' min='0' value= '1'>
+             </div>
+             <div id='units-item' class='flex'>
+                 <div class='margin-half flex-2'>Amount</div>
+                 <input class='margin-half flex-2' name='amount' type='number' min='0' step='0.01' value='1.00'>
+             </div>
+             <input type='submit' value='Create Invoice Item'>
           </form>
     </div>
     

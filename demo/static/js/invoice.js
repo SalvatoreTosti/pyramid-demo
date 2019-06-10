@@ -90,6 +90,27 @@ function submitCreateInvoice(){
     return false
 }
 
+function submitCreateItem(){
+    data = {}
+	$('#item-form').serializeArray().map( function(x){ data[x.name] = x.value }) 
+    $.ajax({
+        url: '/item/create',
+        type: 'POST',
+        data: JSON.stringify(data),
+        success: function(response) {
+            if( response['status'] != 200 ){
+                console.log(response)
+                alert(response['message'])
+                return
+            }
+            console.log(response)
+            alert("Created Item!")
+            refreshInvoices()
+        }
+    })
+    return false
+}
+
 function createInvoiceItems(items){
     itemDivs = []
     for(i = 0; i < items.length; i++){
