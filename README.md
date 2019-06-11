@@ -22,7 +22,7 @@ A demo app using the Pyramid framework.
 ## Using the project
 
 **This section assumes you've followed the _Getting Started_ steps and have the project running**
-* Navigate to *http://localhost:6543/invoices* to view the project. 
+* Navigate to *http://localhost:6543/invoices* to view the project.   
 The /invoices page allows you create new invoices, create invoice sub-items and view all invoices.  
 The creation controls are listed at the top of the screen and the invoices are listed afterward.  
 
