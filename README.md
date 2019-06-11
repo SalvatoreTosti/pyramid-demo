@@ -28,9 +28,9 @@ The creation controls are listed at the top of the screen and the invoices are l
 
 ### Creating Invoices
 This control section includes a date input area and a _Create Invoice_ button
-* Invoice Date Input
+* Invoice Date - Date  
 Allows you to specify a date associated with the invoice you create.
-* Create Invoice Button
+* Create Invoice Button   
 Invoices can be created by clicking the _Create Invoice_ button.
 
 ### Creating Invoice Items
@@ -45,7 +45,7 @@ Allows you to specify a number of units in the Invoice Item.
 * Amount - Decimal (2 digits)  
 Allows you to specify a dollar amount in the Invoice Item.
 
-It also includes a _Create Invoice Item_ button.
+Invoice Items can be created by clicking the _Create Invoice Item_ button.
 
 ### Refreshing Invoice View
 * The page will automatically update itself to reflect Invoices and Invoice Items added through the UI.
