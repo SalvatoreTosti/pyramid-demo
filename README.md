@@ -66,10 +66,10 @@ Relevant response data.
 * 400 - Request failed because of bad input parameter.
 
 #### /invoice/view
-**Description:** Returns a JSON representation of all Invoices and Invoice Items.  
-**URL Structure:** `http://localhost:6543/invoice/view`. 
-**Example:** `curl -X POST http://localhost:6543/invoice/view`. 
-**Parameters:** None.  
+**Description:** Returns a JSON representation of all Invoices and Invoice Items.    
+**URL Structure:** `http://localhost:6543/invoice/view`.   
+**Example:** `curl -X POST http://localhost:6543/invoice/view`.   
+**Parameters:** None.     
 
 #### /invoice/create
 **Description:**   
