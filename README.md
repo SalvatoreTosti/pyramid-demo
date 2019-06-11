@@ -51,9 +51,9 @@ It also includes a _Create Invoice Item_ button.
 * The page will automatically update itself to reflect Invoices and Invoice Items added through the UI.
 * The page can also be manually updated using the _Refresh Invoices_ button.
 
-### Using the API
+## Using the API
 
-#### Response Structure
+### Response Structure
 * **status**  
 Numeric digit in 200 or 400 range. Indicate if request was successful.
 * **message**  
@@ -61,17 +61,17 @@ Human parsable description of errors, only sent on error.
 * **payload**  
 Relevant response data.
 
-#### Errors by Status Code
+### Errors by Status Code
 * 200 - Request succeeded without error.
 * 400 - Request failed because of bad input parameter.
 
-#### /invoice/view
+### /invoice/view
 **Description:** Returns a JSON representation of all Invoices and Invoice Items.    
 **URL Structure:** `http://localhost:6543/invoice/view`.   
 **Example:** `curl -X POST http://localhost:6543/invoice/view`.   
 **Parameters:** None.     
 
-#### /invoice/create
+### /invoice/create
 **Description:**   
 	Creates a new Invoice record.  
 	Returns a JSON representation of the created Invoice.  
@@ -82,7 +82,7 @@ Relevant response data.
 * _date_ - Integer, must be positive   
 Number of seconds  since unix epoch in UTC time.  
 
-####  /item/create
+###  /item/create
 **Description:**   
 	Creates a new Invoice Item record.  
 	Returns a JSON representation of the created Invoice Item.  
