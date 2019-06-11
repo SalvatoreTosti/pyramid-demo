@@ -87,14 +87,13 @@ Number of seconds  since unix epoch in UTC time.
 	Creates a new Invoice Item record.  
 	Returns a JSON representation of the created Invoice Item.  
 **URL Structure:** `http://localhost:6543/item/create`  
-Example: `curl -d "{\"description\":\"example descripton\",\"units\":\"1\",\"amount\":\"1.00\",\"parent_id\":\"1\"}" -X POST http://localhost:6543/item/create  
-`
+**Example:** `curl -d "{\"description\":\"example descripton\",\"units\":\"1\",\"amount\":\"1.00\",\"parent_id\":\"1\"}" -X POST http://localhost:6543/item/create`   
 **Parameters:** `{
 "description" : "example description",
 "units" : "1",
 "amount" : "1.00"
 "parent_id" : "1"
-}`
+}` 
 * _description_ - String.  
 Text description for Inventory Item.  
 * _units_ - Integer, must be positive.  
