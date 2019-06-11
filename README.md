@@ -35,21 +35,17 @@ Invoices can be created by clicking the _Create Invoice_ button.
 
 ### Creating Invoice Items
 This control section includes the following inputs:
-* Item Description - Text
-* Parent ID - Integer
-* Units - Integer
-* Amount - Decimal (2 digits)
-It also includes a _Create Invoice Item_ button.
-
-* Item Description Input
+* Item Description - Text  
 Allows you to specify a description for an Invoice Item.
-* Parent ID
+* Parent ID - Integer  
 Allows you to specify the ID of the Invoice to which the Invoice Item will belong.
 **There must be an Invoice in the database with the given ID, non-existent IDs will fail to be created**
-* Units
+* Units - Integer  
 Allows you to specify a number of units in the Invoice Item.
-* Amount
+* Amount - Decimal (2 digits)  
 Allows you to specify a dollar amount in the Invoice Item.
+
+It also includes a _Create Invoice Item_ button.
 
 ### Refreshing Invoice View
 * The page will automatically update itself to reflect Invoices and Invoice Items added through the UI.
