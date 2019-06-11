@@ -54,11 +54,11 @@ It also includes a _Create Invoice Item_ button.
 ### Using the API
 
 #### Response Structure
-* **status**
-Numeric digit in 200 or 400 range it will indicate if request was successful.
-* **message**
+* **status**  
+Numeric digit in 200 or 400 range. Indicate if request was successful.
+* **message**  
 Human parsable description of errors, only sent on error.
-* **payload**
+* **payload**  
 Relevant response data.
 
 #### Errors by Status Code
@@ -66,31 +66,28 @@ Relevant response data.
 * 400 - Request failed because of bad input parameter.
 
 #### /invoice/view
-**Description:** Returns a JSON representation of all Invoices and Invoice Items.
-**URL Structure:** `http://localhost:6543/invoice/view`
-**Example:** `curl -X POST http://localhost:6543/invoice/view`
-**Parameters:** None.
+**Description:** Returns a JSON representation of all Invoices and Invoice Items.  
+**URL Structure:** `http://localhost:6543/invoice/view`. 
+**Example:** `curl -X POST http://localhost:6543/invoice/view`. 
+**Parameters:** None.  
 
 #### /invoice/create
-**Description:** 
-	Creates a new Invoice record.
-	Returns a JSON representation of the created Invoice.
-**URL Structure:** `http://localhost:6543/invoice/create`
-**Example:** `curl -X POST http://localhost:6543/invoice/create`
-**Example:** `curl -d "{\"date\":\"0\"}" -X POST http://localhost:6543/invoice/create`
-**Parameters:** `{"date": "10000"}`
-* _date_ - Integer, must be positive.
-Number of seconds  since unix epoch in UTC time.
-
-
-curl -d '{"date":"1460089877"}' -X POST http://localhost:6543/invoice/view`
+**Description:**   
+	Creates a new Invoice record.  
+	Returns a JSON representation of the created Invoice.  
+**URL Structure:** `http://localhost:6543/invoice/create`  
+**Example:** `curl -X POST http://localhost:6543/invoice/create`  
+**Example:** `curl -d "{\"date\":\"0\"}" -X POST http://localhost:6543/invoice/create`  
+**Parameters:** `{"date": "10000"}`  
+* _date_ - Integer, must be positive   
+Number of seconds  since unix epoch in UTC time.  
 
 ####  /item/create
-**Description:** 
-	Creates a new Invoice Item record.
-	Returns a JSON representation of the created Invoice Item.
-**URL Structure:** `http://localhost:6543/item/create`
-Example: `curl -d "{\"description\":\"example descripton\",\"units\":\"1\",\"amount\":\"1.00\",\"parent_id\":\"1\"}" -X POST http://localhost:6543/item/create
+**Description:**   
+	Creates a new Invoice Item record.  
+	Returns a JSON representation of the created Invoice Item.  
+**URL Structure:** `http://localhost:6543/item/create`  
+Example: `curl -d "{\"description\":\"example descripton\",\"units\":\"1\",\"amount\":\"1.00\",\"parent_id\":\"1\"}" -X POST http://localhost:6543/item/create  
 `
 **Parameters:** `{
 "description" : "example description",
@@ -98,14 +95,14 @@ Example: `curl -d "{\"description\":\"example descripton\",\"units\":\"1\",\"amo
 "amount" : "1.00"
 "parent_id" : "1"
 }`
-* _description_ - String.
-Text description for Inventory Item.
-* _units_ - Integer, must be positive.
-* _amount_ - Float, must be positive.
-Represents a dollar amount, floats with precision over 2 decimal places will be rounded to 2 decimal places.
-* _parent_id_ - Integer, must be positive.
-ID of an Inventory record in the database.
-Non-existent IDs will return an error.
+* _description_ - String.  
+Text description for Inventory Item.  
+* _units_ - Integer, must be positive.  
+* _amount_ - Float, must be positive.  
+Represents a dollar amount, floats with precision over 2 decimal places will be rounded to 2 decimal places.  
+* _parent_id_ - Integer, must be positive.  
+ID of an Inventory record in the database.  
+Non-existent IDs will return an error.  
 
 ## Running the tests
 
